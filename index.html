@@ -5,7 +5,8 @@
         
     </head>
     <body>
-        <canvas></canvas>
+        <h1>Canvas test</h1>
+        <canvas width="100px" height="40px" style="width: 100px; height: 40px;"></canvas>
 
         <script>
             const c = document.querySelector("canvas");
@@ -14,6 +15,19 @@
             // write text on the canvas
             ctx.fillText("abcd", 20, 20);
 
+            // verify expected text is rendered on cavnas
+
+            // c.toDataUrl() 
+            const expectedImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAoCAYAAAAIeF9DAAAAAXNSR0IArs4c6QAAAZFJREFUaEPtlrFKQ1EQRE++wNbGxsoPUNAPsJdYC5YqwU4xfoAKdikUrARrxV77FFqLCNqIYMpYWcrKPnikCCSXhBHnlpu3yWTOzt3XwEfKgYaUGovBQMSGwEAMRMwBMTlOiIGIOSAmxwkxEDEHxOQ4IQYi5oCYHCfEQMQcEJMzrYTMACfAEfA+ggdzwCFwAPRH6PuzjxqIGLpJAImpvgaW8r/uAxeZkFlgDXgA1oEv4DJrr8AG8FSr3QKfTkjZ1CwDH3k1rQA7ee10gCvgBtir/cQ8sA00gVXgLT87zVpA2vSVVQblHNjKr4gp300o1Q4JUJGQHhDJCEjVid67rHmHlHH47Y7pr0yuJyRgnAHdgYRET6ShevYF+B6otZyQ8cnE1RM7JM597oBjoA0sAItApCauoTjDdsgj8AwYyPg83FniwCTeskr0/PteAxEbAQMxEDEHxOQ4IQYi5oCYHCfEQMQcEJPjhBiImANicpwQAxFzQEyOE2IgYg6IyXFCDETMATE5ToiBiDkgJscJEQPyA8rUQCk18liKAAAAAElFTkSuQmCC';
+            
+            if(c.toDataURL() == expectedImage) {
+                console.log("all good, image match, reloading");
+                setTimeout(() => {
+                    navigation.reload();
+                }, 500);
+            } else {
+                console.err("MISMATCH");
+            }
 
         </script>
     </body>
